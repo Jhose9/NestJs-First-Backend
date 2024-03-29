@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller({ host: 'admin.example.com' })
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -21,3 +21,6 @@ export class AppController {
     return param.peaple;
   }
 }
+
+// Documentation
+// * solo se podra acceder a este controlador(ruta) si tiene este head, @Controller({ host: 'admin.example.com' }).
