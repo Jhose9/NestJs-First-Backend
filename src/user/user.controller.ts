@@ -6,17 +6,25 @@ import {
   Param,
   Patch,
   Post,
+  Query,
+  Res,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto, UpdateUserDtp } from './dto/user.dto';
 import { User, UserData } from './interfaces/user.interfaz';
+import { Response } from 'express';
 
 @Controller(`/user`)
 export class UserController {
   constructor(private userServise: UserService) {}
 
+  @Get()
+  getQuery(@Query() query: { value: number }, @Res() res: Response) {
+    res.json({ Query: query.value });
+  }
+
   @Get(`/all`)
-  helloUser(): any {
+  async helloUser(): Promise<User[]> {
     return this.userServise.getUsers();
   }
 
@@ -46,3 +54,6 @@ export class UserController {
     return this.userServise.updateUser(userId, updateUser);
   }
 }
+
+// Documentation
+// * Query sirve para extraer parámetros enviados de esta manera -> http://localhost:3000/user?value=10 y obteniendo el value 10
