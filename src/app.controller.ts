@@ -12,7 +12,7 @@ export class AppController {
 
   @Get(`/mascot*s`)
   getDogs(): string {
-    return `perrito`;
+    return process.env.DATA_NAME.toString();
   }
 
   @Get(`/:peaple`)

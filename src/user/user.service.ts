@@ -41,4 +41,9 @@ export class UserService {
     });
     return userUpdate;
   }
+
+  async findUser(email: string): Promise<User> {
+    const user: User = await this.prisma.user.findUnique({ where: { email } });
+    return user;
+  }
 }

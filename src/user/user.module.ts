@@ -6,6 +6,7 @@ import { UserMiddleware } from './middleware/user.middleware';
 
 @Module({
   providers: [UserService, PrismaService],
+  exports: [UserService],
   controllers: [UserController],
 })
 export class UserModule implements NestModule {
