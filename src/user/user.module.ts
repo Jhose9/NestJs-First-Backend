@@ -3,9 +3,10 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { PrismaService } from '../prisma.service';
 import { UserMiddleware } from './middleware/user.middleware';
+import { HashService } from './hash.service';
 
 @Module({
-  providers: [UserService, PrismaService],
+  providers: [UserService, PrismaService, HashService],
   exports: [UserService],
   controllers: [UserController],
 })
